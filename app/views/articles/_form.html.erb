@@ -1,0 +1,7 @@
+<%= form_with(model: article, class: "flex flex-column gap-4", data: { turbo: "false" }) do |form| %>
+  <%= input_text(form, :title, article, placeholder: "Great title") %>
+  <%= input_file(form, :cover, article) %>
+  <%= input_text_area(form, :body, article, placeholder: "You can use markdown") %>
+
+  <%= form.submit class: "button button--primary full-width" %>
+<% end %>

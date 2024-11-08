@@ -1,0 +1,21 @@
+<div class="article">
+  <span class="content--xs gray-300"><%=@article.updated_at.to_date.to_formatted_s(:rfc822)%></span>
+  <p>By <span class="bold"><%=@article.user.username%></span></p>
+  <h1 class="heading"><%=@article.title%></h1>
+  <%=image_tag @article.cover, class: "article__cover"%>
+  <article class="prose">
+    <%=@article.to_html.html_safe%>
+  </article>
+</div>
+
+<%# si comment tiene id => PATCH /articles/:article_id/comments/:id
+si comment no tiene id => POST /articles/:article_id/comments %>
+
+<%=form_with(model: [@article, @comment], data: { turbo: "false" }) do |form|%>
+  <%= input_text_area(form, :body, @comment, placeholder: "My polite comment goes here") %>
+  <%= form.submit "Comment", class: "button button--secondary full-width"%>
+<%end%>
+
+<div class="comments">
+  <%=render @article.comments %>
+</div>

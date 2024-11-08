@@ -1,0 +1,14 @@
+<h2 class="heading text-center mb-4">Create an account</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "flex flex-column gap-4", data: { turbo: "false" } }) do |f| %>
+  
+  <%= input_email(f, :email, resource, placeholder: "username@mail.com", autofocus: true) %>
+  <%= input_text(f, :username, resource, placeholder: "username") %>
+  <%= input_password(f, :password, resource, placeholder: "******") %>
+  <%= input_password(f, :password_confirmation, resource, placeholder: "******") %>
+
+  <%= f.submit "Sign up", class: "button button--primary full-width" %>
+
+<% end %>
+
+<%= render "devise/shared/links" %>

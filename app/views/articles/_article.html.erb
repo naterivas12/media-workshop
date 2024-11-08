@@ -1,0 +1,17 @@
+<div class="article-card">
+  <div class="article-card__header">
+    <span><%=article.user.username%></span>
+    <span class="content--xs gray-300"><%=article.updated_at.to_date.to_formatted_s(:rfc822)%></span>
+  </div>
+  <div class="article-card__content">
+    <h2 class="heading--sm"><%=article.title%></h2>
+    <p><%=article.body.first(140)%>...</p>
+  </div>
+  <div class="article-card__footer">
+    <%=link_to "Read full article", article%>
+    <div class="article-card__actions">
+      <%= link_to (image_tag "icons/edit.svg"), edit_article_path(article)%>
+      <%= button_to (image_tag "icons/trash.svg"), article, method: :delete, data: { turbo: "false" }%>
+    </div>
+  </div>
+</div>
